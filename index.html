@@ -10,7 +10,7 @@
     <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <!-- Color theme for statusbar -->
-   <meta name="theme-color" content="#e5eeed">
+   <meta name="theme-color" content="#3b88c3">
   <title>Himatika Perbanas | Ormawa Roulette</title>
   <meta name="description" content="Yuk menangkan hadiah ekslusif dari Himatika Perbanas! Ada snack, free install ulang, dan lain lain." />
     <meta name="keywords" content="Himatika, Roulette Games" />
@@ -228,6 +228,13 @@ playsound.currentTime = 0;
 
             function resetWheel()
             {
+
+              winsound.pause();
+winsound.currentTime = 0;
+
+failsound.pause();
+failsound.currentTime = 0;
+
               $('#reset_button').hide();
               $('#spin_button').fadeIn();
                 document.getElementById('spin_button').src       = "image/on.png";
