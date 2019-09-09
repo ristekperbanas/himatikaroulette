@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+ body {
+  background-image: url(../image/bgr1.gif);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+  .poppins {
+    font-family: 'Poppins', sans-serif !important;
+  }
+
+
+  .logos {
+    width: 100%;
+  }
+
+
+@media only screen and (max-width: 600px) {
+  .logos {
+    width: 120px;
+  }
+
+      .crd {
+      height: 130px;
+      background-color: white;
+       }
+
+         .history {
+    width: 60px;
+  }
+
+    .login {
+    width: 60px;
+  }
+
+  .logout {
+    width: 60px;
+  }
+
+    canvas {
+    max-width: 320px;
+  }
+} 
+
+
+@media screen 
+  and (min-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+
+     .logos {
+    width: 200px;
+  }
+
+}
+
+@media screen 
+  and (min-device-width: 800px)
+  and (max-device-width: 1600px)  
+  and (-webkit-min-device-pixel-ratio: 1) { 
+
+     canvas {
+    max-width: 420px;
+  }
+
+  .crd {
+      max-height: 90px;
+       }
+
+}
+
+
+
+@media only screen and (max-width: 400px) {
+         .history {
+    width: 60px;
+  }
+
+    .logout {
+    width: 60px;
+  }
+
+  .login {
+    width: 60px;
+  }
+
+    canvas {
+    max-width: 250px;
+  }
+
+} 
+
+.history:hover {
+  -webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
+-webkit-box-shadow: 0px 0px 30px 0px rgba(254, 89, 35, 0.65);
+-moz-box-shadow:    0px 0px 30px 0px rgba(254, 89, 35, 0.65);
+box-shadow:         0px 0px 30px 0px rgba(254, 89, 35, 0.65);
+}
+
+ .popup-glow:hover {
+  -webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
+-webkit-box-shadow: 0px 0px 30px 0px rgba(254, 35, 188, 0.65);
+-moz-box-shadow:    0px 0px 30px 0px rgba(254, 35, 188, 0.65);
+box-shadow:         0px 0px 30px 0px rgba(254, 35, 188, 0.65);
+}
+
+
+ .login:hover {
+  -webkit-border-radius: 25px;
+-moz-border-radius: 25px;
+border-radius: 25px;
+-webkit-box-shadow: 0px 0px 30px 0px rgba(219, 198, 5, 0.74);
+-moz-box-shadow:    0px 0px 30px 0px rgba(219, 198, 5, 0.74);
+box-shadow:         0px 0px 30px 0px rgba(219, 198, 5, 0.74);
+}
+
+
+.modal-trigger:hover{
+  background-color: transparent;
+}
+
+ .auth:hover{
+  background-color: transparent;
+}
+
+#spin_button {
+  cursor: pointer;
+}
+
+   #spin_button:hover {
+  -webkit-border-radius: 25px;
+-moz-border-radius: 25px;
+border-radius: 25px;
+-webkit-box-shadow: 0px 0px 30px 0px #55acee;
+-moz-box-shadow:    0px 0px 30px 0px #55acee;
+box-shadow:         0px 0px 30px 0px #55acee;
+}
+
+.fade {
+
+    -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 4s; /* Firefox < 16 */
+        -ms-animation: fadein 4s; /* Internet Explorer */
+         -o-animation: fadein 4s; /* Opera < 12.1 */
+            animation: fadein 4s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+
+.pops {
+    background-image: url(../image/popup.png);
+    background-size: cover;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      transform: translateY(50%) !important;
+    }
+
+    .popz {
+        background-image: url(../image/popup.png);
+        background-size: cover;
+          background-repeat: no-repeat;
+          background-color: transparent;
+        }
+
+
+      .crd {
+      height: 130px;
+      background-image: url(../image/box.png);
+      background-size: cover;
+      background-color: transparent;
+       }
+
+    .token {
+       font-family: Open Sans,sans-serif;
+    color: #e61a46;
+        }
+
+    #wheel {
+      display: block;
+    }
+
+    #im { 
+    display: block;
+    position: relative;
+    width: 40px;
+}

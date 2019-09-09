@@ -1,0 +1,266 @@
+<html>
+
+<head>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="css/web.css">
+  <link rel="shortcut icon" href="image/icon.png">
+    <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <!-- Color theme for statusbar -->
+   <meta name="theme-color" content="#e5eeed">
+  <title>Himatika Perbanas | Ormawa Roulette</title>
+  <meta name="description" content="Yuk menangkan senjata  ekslusif RRQ Endeavour & Hybridman hanya di Roda PBIC 2018!" />
+    <meta name="keywords" content="Garena, Roda PBIC 2018, Point Blank" />
+    <meta name="author" content="GARENA Indonesia" />
+</head>
+
+<body id="bgr">
+
+    <audio id="playsound">
+        <source src="play.mp3" />
+    </audio>
+
+    <audio id="winsound">
+        <source src="tada.mp3" />
+    </audio>
+
+    <audio id="failsound">
+        <source src="fail.mp3" />
+    </audio>
+
+
+
+  <!---Navbar--->
+  <nav class="z-depth-0 transparent">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center"><img src="image/roulette-logo.png" style="margin-top: 20px;" class="logos fade"></a>
+    </div>
+  </nav>
+  <!---End Navbar--->
+  <br>
+
+  <!---Main Content--->
+  <main>
+    <br>
+    <div class="container">
+      <center>
+        <br>
+        <div id="show_user">
+
+        </div>
+         
+    
+
+        <!-- SPINNER AND POPUP -->
+        <div class="row">
+
+
+          <div class="col s12 center wheel" style="display: none;">
+            <center>
+
+              <img src="image/arrow.png" id="im">
+            </center>
+            <canvas id="canvas" width="420" height="420" style="margin-top: -50px;">
+              <p style="color: white">Sorry, your browser doesn't support canvas. Please try another.</p>
+            </canvas>
+            <br>
+            <img id="spin_button" style="margin-top: 10px; border-radius: 30px;" src="image/on.png" onClick="startSpin();">
+            <img id="reset_button" style="display: none; margin-top: 10px; border-radius: 30px;" src="image/again.png" onClick="resetWheel(); return false;">
+            <br />
+          </div>
+
+
+        </div>
+        <!--- END -->
+
+
+        <!-- Modal Prize Structure -->
+        <div id="modalPrize" class="modal popz z-depth-0">
+          <div class="modal-content">
+            <h4 class="txt pink-text">SELAMAT!</h4>
+            <hr>
+            <h5 class="blue-text">Kamu dapat</h5>
+            <h3 id="hadiah" class="black-text"></h3><br>
+        <div id="imgs">
+
+        </div>
+          </div>
+
+        </div>
+
+  
+
+    </div>
+  </main>
+  <!---End Content--->
+
+  <script src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/material.js"></script>
+  <script type="text/javascript" src="js/roles.js"></script>
+  <script type="text/javascript" src="js/Winwheel.js"></script>
+  <script src="js/tweenmax.js"></script>
+
+ 
+<script>
+$(window).load(function() {
+  setTimeout(function(){
+  document.getElementById('bgr').style.backgroundImage = "url('image/bgr1.png')"
+  $('.wheel').fadeIn();
+}, 3000);
+});
+
+
+  // Create new wheel object specifying the parameters at creation time.
+  let theWheel = new Winwheel({
+                'numSegments'  : 6,     // Specify number of segments.
+                'outerRadius'  : 200,   // Set outer radius so wheel fits inside the background.
+                'textFontSize' : 20,    // Set font size as desired.
+                'segments'     :        // Define segments including colour and text.
+                [
+                   {'textFillStyle' : '#FFFFFF', 'fillStyle' : '#3b88c3', 'text' : 'Install Ulang'},
+                   {'textFillStyle' : '#FFFFFF', 'fillStyle' : '#55acee', 'text' : 'Snack'},
+                   {'textFillStyle' : '#FFFFFF', 'fillStyle' : 'red', 'text' : 'Zonk'},
+                   {'textFillStyle' : '#FFFFFF', 'fillStyle' : '#3b88c3', 'text' : 'Spin Lagi'},
+                   {'textFillStyle' : '#FFFFFF', 'fillStyle' : '#55acee', 'text' : 'Snack'},
+                   {'textFillStyle' : '#FFFFFF', 'fillStyle' : 'red', 'text' : 'Zonk'},
+                ],
+                'animation' :           // Specify the animation to use.
+                {
+                    'type'     : 'spinToStop',
+                    'duration' : 30,     // Duration in seconds.
+                    'spins'    : 15000,     // Number of complete spins.
+                    'callbackFinished' : alertPrize
+                }
+            });
+
+
+            // Vars used by the code in this page to do power controls.
+            let wheelPower    = 0;
+            let wheelSpinning = false;
+
+ 
+
+            // -------------------------------------------------------
+            // Click handler for spin button.
+            // -------------------------------------------------------
+            function startSpin()
+            {
+                // Ensure that spinning can't be clicked again while already running.
+                if (wheelSpinning == false) {
+                
+                           // Get the audio with the sound it in, then play.
+        let winsound = document.getElementById('playsound');
+        playsound.play();
+
+                    // Disable the spin button so can't click again while wheel is spinning.
+                    $('#spin_button').hide();
+                    document.getElementById('spin_button').className = "";
+
+                    // Begin the spin animation by calling startAnimation on the wheel object.
+                    theWheel.startAnimation();
+
+                    // Set to true so that power can't be changed and spin button re-enabled during
+                    // the current animation. The user will have to reset before spinning again.
+                    wheelSpinning = true;
+
+                    
+                }
+            }
+
+            // -------------------------------------------------------
+            // Function for reset button.
+            // -------------------------------------------------------
+            // function resetWheel()
+            // {
+            //     theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+            //     theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+            //     theWheel.draw();                // Call draw to render changes to the wheel.
+
+
+
+            //     wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+            // }
+
+            // -------------------------------------------------------
+            // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
+            // note the indicated segment is passed in as a parmeter as 99% of the time you will want to know this to inform the user of their prize.
+            // -------------------------------------------------------
+            function alertPrize(indicatedSegment)
+            {
+
+              playsound.pause();
+playsound.currentTime = 0;
+
+     // Loop and set fillStyle of all segments to gray.
+                // Get the number of the winning segment.
+                let winningSegmentNumber = theWheel.getIndicatedSegmentNumber();
+
+            if(winningSegmentNumber == 4 || winningSegmentNumber == 6){
+               // Get the audio with the sound it in, then play.
+        let failsound = document.getElementById('failsound');
+        failsound.play();
+            } else {
+                // Get the audio with the sound it in, then play.
+        let winsound = document.getElementById('winsound');
+        winsound.play();
+            }
+                
+              
+          
+
+        for (let x = 1; x < theWheel.segments.length; x ++) {
+            theWheel.segments[x].fillStyle = 'gray';
+        }
+ 
+        // Make the winning one yellow.
+        theWheel.segments[winningSegmentNumber].fillStyle = '#3b88c3';
+ 
+         // Call draw function to render changes.
+         theWheel.draw();
+
+           $('#reset_button').fadeIn();
+
+
+            }
+
+            function resetWheel()
+            {
+              $('#reset_button').hide();
+              $('#spin_button').fadeIn();
+                document.getElementById('spin_button').src       = "image/on.png";
+
+                theWheel.segments[1].fillStyle = '#3b88c3';
+                theWheel.segments[2].fillStyle = '#55acee';
+                theWheel.segments[3].fillStyle = 'red';
+                theWheel.segments[4].fillStyle = '#3b88c3';
+                theWheel.segments[5].fillStyle = '#55acee';
+                theWheel.segments[6].fillStyle = 'red';
+
+
+
+
+                theWheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+                theWheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+                theWheel.draw();                // Call draw to render changes to the wheel.
+
+          
+                wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+
+                 
+            }
+</script>
+
+  <!-- modal js -->
+  <script>
+    $(document).ready(function () {
+      $('.modal').modal();
+
+
+    });
+  </script>
+</body>
+
+</html>
