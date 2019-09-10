@@ -19,9 +19,9 @@
 
 <body id="bgr">
 
-    <audio id="playsound">
+    <!-- <audio id="playsound">
         <source src="play.mp3" />
-    </audio>
+    </audio> -->
 
     <audio id="winsound">
         <source src="tada.mp3" />
@@ -130,8 +130,8 @@ $(window).load(function() {
                 'animation' :           // Specify the animation to use.
                 {
                     'type'     : 'spinToStop',
-                    'duration' : 30,     // Duration in seconds.
-                    'spins'    : 15000,     // Number of complete spins.
+                    'duration' : 5,     // Duration in seconds.
+                    'spins'    : 20,     // Number of complete spins.
                     'callbackFinished' : alertPrize
                 }
             });
@@ -151,9 +151,9 @@ $(window).load(function() {
                 // Ensure that spinning can't be clicked again while already running.
                 if (wheelSpinning == false) {
                 
-                           // Get the audio with the sound it in, then play.
-        let winsound = document.getElementById('playsound');
-        playsound.play();
+        //                    // Get the audio with the sound it in, then play.
+        // let winsound = document.getElementById('playsound');
+        // playsound.play();
 
                     // Disable the spin button so can't click again while wheel is spinning.
                     $('#spin_button').hide();
@@ -191,8 +191,7 @@ $(window).load(function() {
             function alertPrize(indicatedSegment)
             {
 
-              playsound.pause();
-playsound.currentTime = 0;
+    
 
      // Loop and set fillStyle of all segments to gray.
                 // Get the number of the winning segment.
